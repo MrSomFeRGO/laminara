@@ -88,6 +88,7 @@ jobs:
     if: needs.version.outputs.publish == 'true'
     uses: ./.github/workflows/launcher.yml
     with:
+      laminara-repository: ${{ github.repository }}
       laminara-ref: ${{ github.sha }}
 
   publish:

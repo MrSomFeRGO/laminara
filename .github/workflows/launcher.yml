@@ -3,8 +3,12 @@ name: Шаблоны лаунчера
 on:
   workflow_call:
     inputs:
+      laminara-repository:
+        description: Репозиторий с исходниками Laminara
+        type: string
+        default: Laminara/laminara
       laminara-ref:
-        description: Ревизия Laminara/laminara, из которой собирается лаунчер
+        description: Ревизия исходников, из которой собирается лаунчер
         type: string
         required: true
       skin-repository:
@@ -43,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
-          repository: Laminara/laminara
+          repository: ${{ inputs.laminara-repository }}
           ref: ${{ inputs.laminara-ref }}
 
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
